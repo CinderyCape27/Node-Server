@@ -1,3 +1,24 @@
-<% include partials/head.ejs %>
-    <h1>Products</h1>
-<% include partials/footer.ejs %>
+<% include partials/head.ejs %> <!-- Esta parte indica que el encabezado esta en otro archivo-->
+<h1>Products</h1>
+<ul>
+    <% for(var i = 0; i < items.length; i++) {%>
+        <li><%= items[i].name%></li>
+        <!-- <h1><%= items[i].id %> <h1>
+       <h2><%= items[i].name %> <h2> -->
+    <% } %>
+</ul>
+<h3>add a new product</h3>
+
+<form action="/new-product" method="POST">
+    <input type="text" name="newItem" id="newItem">
+    <button>
+        Add a new product
+    </button>
+</form> 
+
+<Script>
+    const txtNewItem = document.getElementById('newItem');
+    txtNewItem.focus();
+</Script>
+
+<% include partials/footer.ejs %> <!-- Esta parte indica que el footer esta en otro archivo-->

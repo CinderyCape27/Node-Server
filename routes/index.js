@@ -6,20 +6,12 @@ const router = express.Router(); // Este es un módulo de express
 //router.get('/', (req, res) => { // cuando router indique la ruta principal (/) devolverá un "Hello world"
 //    res.end('Hello World') //res.end indica que responderá a la función con los parámetros que tiene
 //});
+const indexController = require('../controlers/indexc');
+router.get('/', indexController.index); // A esto se le conoce como Vista
 
-router.get('/',(req, res) => {
-    res.render('index', {
-        title: 'My WebStore' // A parte del index podemos agregar mad objetos en formato JSON y será recibido en el archivo ejs
-    }) // Renderiza el archivo index.ejs el cual se convierte en un archivo HTML y que luego será lo que se muestre en el server
-}); // A esto se le conoce como Vista
+router.get('/products', indexController.ListOfproducts);
 
-router.get('/products', (req, res, next) => {
-    res.render('products', {
-        title: 'List of Products'
-    });
-});
-
-
+router.post('/new-product', indexController.newProduct);
 
 
 
